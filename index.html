@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Obverse Playground</title>
+    <meta name="description" content="A web REPL, examples gallery, and complete reference for Obverse — a functional logic language with a real finite-domain constraint solver." />
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon-DnHqFWtw.svg" />
+    <script type="module" crossorigin src="./assets/index-C2gPHDsc.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B3WfPiGa.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">✳</span>
+        <span class="brand-name">Obverse <span class="brand-dim">Playground</span></span>
+      </div>
+      <nav class="nav" aria-label="Views">
+        <button type="button" class="nav-btn is-active" id="nav-play" aria-pressed="true">Playground</button>
+        <button type="button" class="nav-btn" id="nav-ref" aria-pressed="false">Reference</button>
+        <button type="button" class="nav-btn" id="nav-road" aria-pressed="false">Roadmap</button>
+      </nav>
+      <div class="header-right">
+        <div class="dropdown" id="examples-dropdown">
+          <button type="button" class="btn dropdown-toggle" id="examples-btn" aria-haspopup="true" aria-expanded="false">
+            Examples <span class="caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="dropdown-panel" id="examples-panel" role="menu" hidden></div>
+        </div>
+        <button type="button" class="btn icon-btn" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+          <span id="theme-icon" aria-hidden="true">☾</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Playground view -->
+    <section class="view view-play" id="view-play">
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <button type="button" class="btn btn-accent run-btn" id="run-btn">
+            <span class="run-glyph" aria-hidden="true">▶</span> Run
+            <kbd class="kbd" id="run-hint">⌘⏎</kbd>
+          </button>
+          <label class="field">
+            <span class="field-label">answers</span>
+            <select id="answers-select" class="select">
+              <option value="1">1</option>
+              <option value="10" selected>10</option>
+              <option value="all">all</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">timeout</span>
+            <select id="timeout-select" class="select">
+              <option value="2000">2s</option>
+              <option value="5000" selected>5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </label>
+          <button type="button" class="btn" id="share-btn">Share</button>
+          <button type="button" class="btn" id="reset-btn">Reset</button>
+        </div>
+        <div class="toolbar-right">
+          <span class="status" id="status" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="split" id="split">
+        <div class="pane pane-editor" id="pane-editor">
+          <div class="editor-host" id="editor-host"></div>
+        </div>
+        <div class="splitter" id="splitter" role="separator" aria-orientation="vertical" tabindex="0" aria-label="Resize editor and results"></div>
+        <div class="pane pane-results">
+          <div class="tabs" role="tablist" aria-label="Results">
+            <button type="button" class="tab is-active" id="tab-answers" role="tab" aria-selected="true">Answers</button>
+            <button type="button" class="tab" id="tab-errors" role="tab" aria-selected="false">Errors</button>
+            <button type="button" class="tab tab-info" id="tab-info" role="tab" aria-selected="false" title="About the loaded program">ℹ</button>
+          </div>
+          <div class="results" id="results">
+            <div class="panel" id="panel-answers" role="tabpanel">
+              <div class="placeholder">Press <kbd class="kbd">Run</kbd> to evaluate. Answers appear here as JSON.</div>
+            </div>
+            <div class="panel" id="panel-errors" role="tabpanel" hidden>
+              <div class="placeholder">No errors.</div>
+            </div>
+            <div class="panel" id="panel-info" role="tabpanel" hidden>
+              <div class="placeholder">Load an example to see what it demonstrates.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reference view -->
+    <section class="view view-ref" id="view-ref" hidden>
+      <div class="ref-layout">
+        <aside class="ref-sidebar" id="ref-toc" aria-label="Reference contents"></aside>
+        <div class="ref-body" id="ref-body"></div>
+      </div>
+    </section>
+
+    <section class="view view-road" id="view-road" hidden>
+      <div class="ref-layout">
+        <div class="ref-body" id="road-body"></div>
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <span class="kernel-version">obverse 0.1.0</span>
+    </footer>
+
+    <div class="toast" id="toast" hidden aria-live="polite"></div>
+
+  </body>
+</html>
