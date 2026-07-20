@@ -6,8 +6,8 @@
     <title>Obverse Playground</title>
     <meta name="description" content="A web REPL, examples gallery, and complete reference for Obverse — a functional logic language with a real finite-domain constraint solver." />
     <link rel="icon" type="image/svg+xml" href="./assets/favicon-DnHqFWtw.svg" />
-    <script type="module" crossorigin src="./assets/index-C2gPHDsc.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-B3WfPiGa.css">
+    <script type="module" crossorigin src="./assets/index-CfXe9kFu.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DF6g6kp9.css">
   </head>
   <body>
     <header class="app-header">
@@ -21,12 +21,6 @@
         <button type="button" class="nav-btn" id="nav-road" aria-pressed="false">Roadmap</button>
       </nav>
       <div class="header-right">
-        <div class="dropdown" id="examples-dropdown">
-          <button type="button" class="btn dropdown-toggle" id="examples-btn" aria-haspopup="true" aria-expanded="false">
-            Examples <span class="caret" aria-hidden="true">▾</span>
-          </button>
-          <div class="dropdown-panel" id="examples-panel" role="menu" hidden></div>
-        </div>
         <button type="button" class="btn icon-btn" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
           <span id="theme-icon" aria-hidden="true">☾</span>
         </button>
@@ -35,8 +29,13 @@
 
     <!-- Playground view -->
     <section class="view view-play" id="view-play">
+      <aside class="examples-sidebar" id="examples-sidebar" aria-label="Examples" hidden></aside>
+      <div class="play-main">
       <div class="toolbar">
         <div class="toolbar-left">
+          <button type="button" class="btn examples-toggle" id="examples-btn" aria-expanded="false" aria-controls="examples-sidebar" title="Show examples list">
+            <span class="ex-glyph" aria-hidden="true">☰</span> Examples
+          </button>
           <button type="button" class="btn btn-accent run-btn" id="run-btn">
             <span class="run-glyph" aria-hidden="true">▶</span> Run
             <kbd class="kbd" id="run-hint">⌘⏎</kbd>
@@ -88,6 +87,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
 
