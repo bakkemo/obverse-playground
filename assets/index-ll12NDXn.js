@@ -49,6 +49,7 @@ exists person, age {
 //
 // Facts: a parent/2 relation as BARE alternatives — every branch
 // is an answer (one{} would commit to the first; | alone enumerates).
+// \`:=\` DEFINES a relation — distinct from \`=\`, which unifies terms in a body.
 parent(x, y) := (
   (x = "tom"; y = "bob")
 | (x = "tom"; y = "liz")
